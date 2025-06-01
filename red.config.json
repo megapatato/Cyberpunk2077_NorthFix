@@ -1,0 +1,15 @@
+{
+  "name": "NorthFix",
+  "version": "0.1",
+  "license": true,
+  "game": "C:\\Program Files (x86)\\GOG Galaxy\\Games\\Cyberpunk 2077",
+  "stage": "stage\\",
+  "watchTime": 140030663,
+  "scripts": {
+    "cet": { "src": "." }
+  },
+  "plugin": {
+    "debug": "build\\Debug\\",
+    "release": "build\\Release\\"
+  }
+}

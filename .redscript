@@ -1,0 +1,5 @@
+source_roots = ["."]
+
+[format]
+indent = 4
+max_width = 80

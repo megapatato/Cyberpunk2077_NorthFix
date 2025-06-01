@@ -1,0 +1,52 @@
+geometryCache:
+    library path: base\gameplay\gui\widgets\minimap\minimap.inkwidget
+    library item: root
+    name path: Root/MiniMapContainer/maskedContainer/geometryCache
+    index path: inkVirtualWindow[0]/inkCanvasWidget[3]/inkCanvasWidget[11]/inkCanvasWidget[2]
+
+
+inkCanvasWidget # MiniMapContainer
+    inkCanvasWidget # unmaskedContainer
+        | held the quest destination marker, the one with the bang! (but not the path to it, which is GPS?)
+    inkCanvasWidget # maskedContainer
+        | holds the roads, building outlines, GPS trail, fast-travel marker, POI marker
+        inkCacheWidget # geometryCache
+            | in-game, has rotation!
+            inkCanvasWidget # geometrySpawnContainer
+                | last tree-element to have a rotation
+        inkCanvasWidget # gpsPathContainer
+            | in-game, no rotation...
+        inkCanvasWidget # unclampedMappinContainer
+            | in-game, also has rotation!
+
+gameuiMinimapContainerController
+    parent: gameuiMappinsContainerController
+    alias: MinimapContainerController
+
+        //    .GetWidgetByPathName(n"Root/TopRightMain/Topright/TopRightMapContainer/ToprightWantedMinimap/minimap") as inkImage;
+        // Root/TopRightMain/Topright/TopRightMapContainer/ToprightWantedMinimap/minimap
+        // Root/HUDMiddleWidget/Root/inkHorizontalPanelWidget5/fpsText
+        // Root/HUDMiddleWidget/Root/inkHorizontalPanelWidget5/fpsCounter
+        //this.minimap_north = this.minimap_stock.SpawnFromLocal();
+        //this.minimap_north.SetRotation(30);
+
+Idea:
+a) clone the widget at game-time into a "fixed-heading" widget
+b) remove the rotations on fixed-heading's static layers
+   maybe re-parent it's player icon to stock one so it inherits that rotation cryptically?
+c) toggle visibilities with script conditions / events
+
+Alternative:
+a) edit the stock widget, to duplicate the aforementioned layers
+b) give them a name to fetch with GetWidgetByPathName(path: CName) ?
+c) set the dupes to invisible by default
+d) control the toggling via RedScript?
+
+What's resetting visibility?
+-Wrap inCacheWidget.SetVisible() and print out... stack?
+
+// consider using RedScript:
+// for a specific vehicle?
+//      VehicleComponent.IsMountedToVehicle(GameInstance, EntityID | weak<GameObject>) -> Bool
+// for more general?
+//      if IsDefined(playerPuppet.m_mountedVehicle)

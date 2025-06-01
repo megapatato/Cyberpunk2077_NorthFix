@@ -1,0 +1,8 @@
+{
+    "Lua.runtime.version": "LuaJIT",
+    "Lua.workspace.preloadFileSize": 15360,
+    "Lua.workspace.library": [
+        "e:\\Modding\\Cyberpunk 2077\\cet-lua-a-1.27.0-231008",
+        "e:\\Modding\\Cyberpunk 2077\\cet-lua-b-1.27.0-231008"
+    ]
+}
